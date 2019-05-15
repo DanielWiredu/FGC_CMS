@@ -1,0 +1,281 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="FGC_CMS.Home" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Church Management System</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link href="/bootstrap/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Ionicons 
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+  -->
+    <link rel="stylesheet" href="/dist/css/AdminLTE.min.css" />
+
+    <link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css" />
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <!-- toastr references -->
+    <script src="/plugins/toastr/jquery-2.1.1.js"></script>
+    <link href="/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <script src="/plugins/toastr/toastr.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <form id="form1" runat="server">
+        <div class="wrapper">
+
+            <!-- Main Header -->
+            <header class="main-header">
+
+                <!-- Logo -->
+                <a href="/Dashboard.aspx" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>F</b>GC</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Church Management System</b></span>
+                </a>
+
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+
+
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown notifications-menu">
+                                <!-- Menu toggle button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning" runat="server" id="lblBdays">10</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">Notifications</li>
+                                    <li>
+                                        <!-- Inner Menu: contains the notifications -->
+                                        <ul class="menu">
+                                            <li>
+                                                <!-- start notification -->
+                                                <a href="/Main/Birthday.aspx" runat="server" id="lkBdays">
+                                                    <i class="fa fa-users text-aqua"></i>5 policies about to expire
+                                                </a>
+                                            </li>
+                                            <!-- end notification -->
+                                        </ul>
+                                    </li>
+                                    <%--<li class="footer"><a href="#">View all</a></li>--%>
+                                </ul>
+                            </li>
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+
+                                <asp:LinkButton ID="bntLogout" runat="server" CssClass="fa fa-sign-out" OnClick="bntLogout_Click" CausesValidation="false"> Logout</asp:LinkButton>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="/dist/img/rivers-in-desert-banner.jpg" class="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                            <!--  <p>Alexander Pierce</p>  -->
+                            <!-- Status -->
+                            <!--   <a href="#"><i class="fa fa-circle text-success"></i> Online</a>  -->
+                            <span style="font-size: small">Welcome, </span>
+                            <br />
+                            <br />
+                            <asp:Label Font-Size="Large" ID="lblUser" runat="server" Text="User"></asp:Label>
+                        </div>
+                    </div>
+
+                    <!-- search form (Optional) -->
+
+                    <!-- /.search form -->
+
+                    <!-- Sidebar Menu -->
+                    <ul class="sidebar-menu">
+                        <li class="header">MENU</li>
+                        <!-- Optionally, you can add icons to the links -->
+                        <li class="active"><a href="/Dashboard.aspx"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+
+                        <li class="treeview"><a href="#"><i class="fa fa-institution"></i><span>Membership</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Main/Members.aspx">Members</a></li>
+                                <li><a href="/Main/Visitors.aspx">Visitors</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="/Attendance/Attendance.aspx"><i class="fa fa-sitemap"></i><span>Attendance</span></a></li>
+
+                        <li class="treeview"><a href="#"><i class="fa fa-reply"></i><span>Services</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="/ServiceResponse/SoulsWon.aspx">Service Response</a></li>
+                                <li class="treeview"><a href="#"><span>Graphs</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="/Main/MemberCharts/MemberCharts.aspx">Members</a></li>
+                                        <li><a href="/Attendance/AttendanceCharts.aspx">Attendance</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Financials</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Financials/IncomeList.aspx">Income </a></li>
+                                <li><a href="/Financials/ExpenseList.aspx">Expenses </a></li>
+                                <li><a href="/Financials/Tithes.aspx">Tithes </a></li>
+                                <li><a href="/Financials/Honorarium.aspx">Honorarium </a></li>
+                                <%--<li><a href="/Financials/BankRegister.aspx">Bank Register </a> </li>--%>
+                                <li><a href="/Financials/BankTransactions.aspx">Bank Transactions </a></li>
+                                <li class="treeview"><a href="#"><span>Project Offering</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="/Financials/ProjectMembers.aspx">Member</a></li>
+                                        <li><a href="/Financials/ProjectVisitors.aspx">Visitor</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a href="/Main/Messaging.aspx"><i class="fa fa-paper-plane"></i><span>Messaging</span></a></li>
+
+                        <%--<li><a href="/Main/MemberReports/Reports.aspx"><i class="fa fa-files-o"></i> <span>Reports</span></a></li>--%>
+
+                        <li class="treeview"><a href="#"><i class="fa fa-files-o"></i><span>Reports</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Main/MemberReports/Reports.aspx">Members</a></li>
+                                <li><a href="/Main/FinancialReports/FinancialReports.aspx">Financials </a></li>
+                                <li><a href="/Main/FinancialReports/ChequeReports.aspx">Cheques </a></li>
+                                <li><a href="/Main/FinancialReports/TitheReports.aspx">Tithes </a></li>
+                                <li><a href="/Main/FinancialReports/ProjectReports.aspx">Projects </a></li>
+                                <li><a href="/Main/FinancialReports/BankReports.aspx">Bank Transactions </a></li>
+                            </ul>
+                        </li>
+
+                        <%--  <li  class="treeview"><a href="#"><i class="fa fa-area-chart"></i> <span>Graphs</span> <i class="fa fa-angle-left pull-right"></i></a>             
+                    <ul class="treeview-menu">
+                        <li><a href="/Main/MemberCharts/MemberCharts.aspx">Members</a></li>
+                        <li><a href="/Attendance/AttendanceCharts.aspx">Attendance</a></li>     
+                    </ul>
+            </li>--%>
+
+                        <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Setups</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Setups/Ministry.aspx">Ministry</a></li>
+                                <li><a href="/Setups/Departments.aspx">Department</a></li>
+                                <li><a href="/Setups/Committee.aspx">Committee</a></li>
+                                <li><a href="/Setups/Tabernacle.aspx">Tabernacle</a></li>
+                                <li><a href="/Setups/Occupation.aspx">Occupation</a></li>
+                                <li><a href="/Setups/Services.aspx">Services</a></li>
+                                <li class="treeview"><a href="#"><span>Financials</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="/Setups/Banks.aspx">Banks</a></li>
+                                        <li><a href="/Setups/Currencies.aspx">Currencies</a></li>
+                                        <li><a href="/Setups/Projects.aspx">Projects</a></li>
+                                        <li><a href="/Setups/TransactionTypes.aspx">Transaction Types</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/Users.aspx"><i class="fa fa-user-plus"></i><span>Users</span></a></li>
+
+                    </ul>
+                    <!-- /.sidebar-menu -->
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <!-- Your Page Content Here -->
+                    <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Office2010Blue"></telerik:RadSkinManager>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+
+
+                </section>
+                <!-- /.content -->
+
+            </div>
+            <!-- /.content-wrapper -->
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    Where God makes rivers in the desert
+                </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; <%=DateTime.Now.Year.ToString() %> <a href="http://www.desertpastures.com/" target="_blank">Desert Pastures</a>.</strong> All rights reserved.
+            </footer>
+
+
+        </div>
+        <!-- ./wrapper -->
+    </form>
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/app.min.js"></script>
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+         Both of these plugins are recommended to enhance the
+         user experience. Slimscroll is required when using the
+         fixed layout. -->
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+
+            }, 1300);
+        });
+
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+
+.Grid
+{
+      border: 1px solid #000000;
+}
+.GridCell
+{
+    padding: 3px 3px 3px 3px; /* Cellpadding */
+    border: 1px solid #000000;
+    font-family:Verdana;
+    font-size:10pt;   
+}
+.GridHeader
+{
+      background-color:#999966;
+}
+.GridRow
+{
+    background-color:#ffffcc;
+}
